@@ -8,6 +8,8 @@ import { RegisterComponent } from './Components/register/register.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BookFlightComponent } from './Components/book-flight/book-flight.component';
 import { GetDetailsComponent } from './Components/get-details/get-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { GetDetailsComponent } from './Components/get-details/get-details.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
