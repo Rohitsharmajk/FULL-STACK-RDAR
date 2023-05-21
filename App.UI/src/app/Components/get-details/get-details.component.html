@@ -3,19 +3,21 @@
     <h1 class="display-3">Fill Details</h1>
     <br/>
 
-    <form  #form="ngForm" >
+    <form  #form="ngForm" (ngSubmit)="getFlightDetails()">
         <div style="margin-left:40%">
             <div class="input-group mb-3">
                 <Label class="input-group-text" style="text-align:center">Select Source: </Label>
                 <select name="source" [(ngModel)]="flightDetailsRequest.source">
-                    <option>Mumbai</option>
+                    <option >Source</option>
+                    <option *ngFor="let source of sources">{{source}}</option>
                 </select>
             </div>
 
             <div class="input-group mb-3">
                 <Label class="input-group-text">Select Destination: </Label>
                 <select name="destination" [(ngModel)]="flightDetailsRequest.destination">
-                    <option>Delhi</option>
+                    <option >Destination</option>
+                    <option *ngFor="let des of dests">{{des}}</option>
                 </select>
             </div>
 

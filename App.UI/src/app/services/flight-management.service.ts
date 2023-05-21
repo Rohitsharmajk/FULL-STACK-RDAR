@@ -2,8 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { flightDto, loginDto, registerDto } from '../Models/user.model';
-import { Observable } from 'rxjs';
-import { Http, Headers, Response } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +13,20 @@ export class FlightManagementService {
   constructor(private http:HttpClient) {
    }
 
+   //Login API
    loginUserApi(request:loginDto)
    {
     return this.http.post(this.baseApiUrl+'Account/login',request,{responseType: 'text'});
    }
+   //Register API
    registerUserApi(request:registerDto)
    {
     return this.http.post(this.baseApiUrl+'Account/register',request,{responseType: 'text'});
    }
+
+   //Get flight detail
    FetchFlightDetailsApi(token:string)
    {
-    // const header = new Headers({
-    //   'Content-Type': 'application/json',
-    //   'Authorization': `Bearer ${token}`
-    // })
     const httpOptions:Object = {
       headers:new HttpHeaders({
         'Content-Type': 'application/json',
@@ -37,4 +35,17 @@ export class FlightManagementService {
     };
     return this.http.get(this.baseApiUrl+'Booking/getdetails', httpOptions)
    }
+
+      //Get flight detail
+      FetchSpecificFlightDetailsApi(token:string,requestData:flightDto)
+      {
+       const httpOptions:Object = {
+         headers:new HttpHeaders({
+           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${token}`,
+         }),
+       };
+       return this.http.get(this.baseApiUrl+`Booking/bookflight?source=${requestData.source}&destination=${requestData.destination}&date=${requestData.date}`, httpOptions)
+      }
+
 }

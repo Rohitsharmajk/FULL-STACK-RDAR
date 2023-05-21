@@ -13,7 +13,10 @@
     {
         source:string,
         destination:string,
-        date:Date
+        date:Date,
+        id:number,
+        name:string,
+        fare:number
     }
     export interface passengerDto
     {

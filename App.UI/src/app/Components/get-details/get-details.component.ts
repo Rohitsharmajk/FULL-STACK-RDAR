@@ -13,11 +13,15 @@ export class GetDetailsComponent {
   flightDetailsRequest:flightDto={
     source:'',
     destination:'',
-    date:new Date()
+    date:new Date(),
+    name:'',
+    fare:0,
+    id:-1
   };
   token:string='';
-  source:string[]=[];
-  dest:string[]=[];
+  sources:string[]=[];
+  dests:string[]=[];
+  data=[];
 
   constructor(private router :Router,private flightmgmservice:FlightManagementService){
     this.token=this.router.getCurrentNavigation()?.extras.state?.['example'];
@@ -28,7 +32,9 @@ export class GetDetailsComponent {
     this.flightmgmservice.FetchFlightDetailsApi(this.token)
     .subscribe(
       (response: any) => {
-          console.log(response);
+        this.sources=response.source;
+        this.dests=response.destination;
+          // console.log(this.dests);
           
       }, 
       (error: any) => {
@@ -44,7 +50,29 @@ export class GetDetailsComponent {
 
   getFlightDetails()
     {
-      console.log(this.flightDetailsRequest);
+      if(this.flightDetailsRequest.source!==this.flightDetailsRequest.destination)
+      {
+        console.log(this.flightDetailsRequest);
+        this.flightmgmservice.FetchSpecificFlightDetailsApi(this.token,this.flightDetailsRequest)
+        .subscribe(
+        (response: any) => {
+          
+            console.log(response);
+            this.data=response;
+            this.router.navigate(['bookFlight'], { state: { example: this.data } });
+            
+        }, 
+        (error: any) => {
+            console.log(error)
+        })
+
+        
+      }
+      else
+      {
+        console.log("souce and destination cannot be same");
+      }
+      
       
     }
 
