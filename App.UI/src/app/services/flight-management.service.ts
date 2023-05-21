@@ -9,6 +9,6 @@ export class FlightManagementService {
 
   baseApiUrl:string=environment.baseApiUrl;
   constructor(private http:HttpClient) {
-    this.http.post(this.baseApiUrl+'/Account/register');
+    //this.http.post(this.baseApiUrl+'/Account/register');
    }
 }
