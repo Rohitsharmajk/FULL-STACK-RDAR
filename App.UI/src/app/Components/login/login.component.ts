@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
       this.flightmgmservice.loginUserApi(this.loginUserRequest)
       .subscribe(
         (response: any) => {
-            console.log(response);
-            this.router.navigate(['home']);
+            // console.log(response);
+            this.router.navigate(['home'], { state: { example: response } });
         }, 
         (error: any) => {
             console.log(error)

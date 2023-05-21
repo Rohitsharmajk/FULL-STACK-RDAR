@@ -15,20 +15,37 @@ export class GetDetailsComponent {
     destination:'',
     date:new Date()
   };
-  constructor(private router :Router,private flightmgmservice:FlightManagementService){}
+  token:string='';
+  source:string[]=[];
+  dest:string[]=[];
+
+  constructor(private router :Router,private flightmgmservice:FlightManagementService){
+    this.token=this.router.getCurrentNavigation()?.extras.state?.['example'];
+
+    // console.log(2)
+    // console.log(this.token);
+
+    this.flightmgmservice.FetchFlightDetailsApi(this.token)
+    .subscribe(
+      (response: any) => {
+          console.log(response);
+          
+      }, 
+      (error: any) => {
+          console.log(error)
+      })
+
+  }
+  
+
+  ngOnInit(): void { 
+  
+  }
 
   getFlightDetails()
     {
       console.log(this.flightDetailsRequest);
-      this.flightmgmservice.FetchFlightDetailsApi(this.flightDetailsRequest)
-      .subscribe(
-        (response: any) => {
-            console.log(response);
-            this.router.navigate(['book-flight']);
-        }, 
-        (error: any) => {
-            console.log(error)
-        })
+      
     }
 
 }
