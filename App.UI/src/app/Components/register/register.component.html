@@ -1,16 +1,19 @@
 <div style="margin-left: 30px; float: left; width: 45%; margin-top: 40px;">
-    <form >
+    <form #form="ngForm" (ngSubmit)="registerUser()">
         <div class="mb-3">
           <label for="userName" class="form-label">UserName</label>
-          <input type="text" class="form-control" id="userName" autocomplete="off">
+          <input type="text" class="form-control" id="userName" autocomplete="off"
+          name="UserName" [(ngModel)]="registerUserRequest.UserName">
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" autocomplete="off">
+          <input type="password" class="form-control" id="password" autocomplete="off"
+          name="Password" [(ngModel)]="registerUserRequest.Password">
         </div>
         <div class="mb-3">
             <label for="confirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" autocomplete="off">
+            <input type="password" class="form-control" id="confirmPassword" autocomplete="off"
+            name="ConfirmPass" [(ngModel)]="registerUserRequest.ConfirmPass">
           </div>
         <button type="submit" class="btn btn-primary">Register</button>
       </form>
