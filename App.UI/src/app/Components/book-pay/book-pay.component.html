@@ -3,7 +3,7 @@
     <div style="width: 50%; height: 100px; float: left;">
         <h2 class="display-6">Enter Your Personal Details</h2>
 
-        <form #form="ngForm" (ngSubmit)="bookTicket()" >
+        <form #form="ngForm"  (ngSubmit)="AddBanda()" ngNativeValidate>
             <div class="input-group mb-3">
                 <label class="input-group-text">Name</label>
                 <input type="text" name="Name" minlength="2" required class="form-control" autocomplete="off" 
@@ -12,7 +12,7 @@
 
             <div class="input-group mb-3">
                 <label class="input-group-text">Contact No.(10 digit)</label>
-                <input type="tel" name="Phone" pattern="[6-9]{1}[0-9]{9}" required class="form-control" autocomplete="off" 
+                <input type="tel" name="Phone" pattern="[0-9]{10}" required class="form-control" autocomplete="off" 
                  [(ngModel)]="passenger.Phone"/><br />
             </div>
 
@@ -39,9 +39,9 @@
 
 
             <button type="reset" value="Reset" class="btn btn-primary" style="margin-left: 0.5%;">Reset</button>
-            <button type="button" value="Add" class="btn btn-primary" style="margin-left: 0.5%;" (click)="AddBanda()">Add</button>
+            <button type="submit" value="Add" class="btn btn-primary" style="margin-left: 0.5%;" >Add</button>
             <div>
-                <button type="submit" class="btn btn-primary" style="margin-left: 0.5%;margin-top: 1%;" >Submit</button>
+                <button type="button" class="btn btn-primary" style="margin-left: 0.5%;margin-top: 1%;" (click)="bookTicket()" >Submit</button>
             </div>
         </form>
         <br/>

@@ -22,6 +22,8 @@ export class GetDetailsComponent {
   sources:string[]=[];
   dests:string[]=[];
   data=[];
+  error:string='';
+  error1:string='';
 
   constructor(private router :Router,private flightmgmservice:FlightManagementService){
     this.token=this.router.getCurrentNavigation()?.extras.state?.['example'];
@@ -64,14 +66,15 @@ export class GetDetailsComponent {
             
         }, 
         (error: any) => {
-            console.log(error)
+            // console.log(error)
+            this.error=error.error;
         })
 
         
       }
       else
       {
-        console.log("souce and destination cannot be same");
+        this.error1="souce and destination cannot be same";
       }
       
       

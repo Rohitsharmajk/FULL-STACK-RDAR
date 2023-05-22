@@ -14,8 +14,16 @@ export class LoginComponent implements OnInit {
     UserName:'',
     Password:''
   };
+  error:string='';
+    constructor(private router :Router,private flightmgmservice:FlightManagementService){
+      var res=localStorage.getItem('currentUser');
+      if(res!='nouser')
+      {
+        console.log(res+"  hey");
+        this.router.navigate(['home']);
+      }
 
-    constructor(private router :Router,private flightmgmservice:FlightManagementService){}
+    }
     ngOnInit(): void {
       
     }
@@ -25,11 +33,15 @@ export class LoginComponent implements OnInit {
       this.flightmgmservice.loginUserApi(this.loginUserRequest)
       .subscribe(
         (response: any) => {
-            // console.log(response);
-            this.router.navigate(['home'], { state: { example: response } });
+            console.log(response);
+            localStorage.setItem('currentUser', this.loginUserRequest.UserName.toString());
+            this.router.navigate(['home'], { state: { example: response } }).then(() => {
+              window.location.reload();
+            });
+  
         }, 
         (error: any) => {
-            console.log(error)
+            this.error=error.error;
         })
     }
 }
