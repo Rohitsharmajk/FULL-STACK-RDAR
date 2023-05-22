@@ -25,6 +25,7 @@ export class GetDetailsComponent {
 
   constructor(private router :Router,private flightmgmservice:FlightManagementService){
     this.token=this.router.getCurrentNavigation()?.extras.state?.['example'];
+    console.log(this.token);
 
     // console.log(2)
     // console.log(this.token);
@@ -52,14 +53,14 @@ export class GetDetailsComponent {
     {
       if(this.flightDetailsRequest.source!==this.flightDetailsRequest.destination)
       {
-        console.log(this.flightDetailsRequest);
+        //console.log(this.flightDetailsRequest);
         this.flightmgmservice.FetchSpecificFlightDetailsApi(this.token,this.flightDetailsRequest)
         .subscribe(
         (response: any) => {
           
-            console.log(response);
+            console.log(this.flightDetailsRequest);
             this.data=response;
-            this.router.navigate(['bookFlight'], { state: { example: this.data } });
+            this.router.navigate(['bookFlight'], { state: { example: this.data, example2:this.token ,flightdetail:this.flightDetailsRequest} });
             
         }, 
         (error: any) => {

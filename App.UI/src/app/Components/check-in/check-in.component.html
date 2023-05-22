@@ -1,0 +1,15 @@
+
+        <h1 align="center" class="display-3">Enter Your Boarding ID to Check In</h1><br/>
+        <form #form="ngForm" (ngSubmit)="checking()">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="idValue" [(ngModel)]="idValue" autocomplete="off">
+              </div>
+            <button type="submit" value="Check" class="btn btn-primary" >Check In</button>
+        </form>
+        <div *ngIf="statusCode!=null && statusCode==200" style="text-align: center;">
+            <h2 class="display-5">You have successfully checked In with boarding Id {{idValue}}</h2>
+        </div>
+        <div *ngIf="statusCode!=null && statusCode==400" style="text-align: center;">
+          <h2 class="display-5">{{message}}</h2>
+      </div>

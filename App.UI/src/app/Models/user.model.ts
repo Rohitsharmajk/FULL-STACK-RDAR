@@ -23,11 +23,14 @@
         Name:string,
         Email:string,
         Gender:string,
-        Phone:number,
-        Age:number
+        Phone?:number,
+        Age?:number
     }
     export interface passengerBookDto
     {
         flightId:number,
         passengers:passengerDto[]
     }
+    export interface obj{
+        id:number,
+      };

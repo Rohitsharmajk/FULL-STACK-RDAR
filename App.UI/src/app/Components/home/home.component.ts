@@ -20,4 +20,14 @@ export class HomeComponent {
     this.router.navigate(['getDetails'], { state: { example: this.token } });
   }
 
+  checkin()
+  {
+    this.router.navigate(['checkIn'], { state: { example: this.token } });
+  }
+
+  bookinghistory()
+  {
+    this.router.navigate(['bookingHistory'], { state: { example: this.token } });
+  }
+
 }

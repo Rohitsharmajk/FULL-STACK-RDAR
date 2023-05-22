@@ -1,0 +1,69 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+<div style="width: 100%;">
+    <div style="width: 50%; height: 100px; float: left;">
+        <h2 class="display-6">Enter Your Personal Details</h2>
+
+        <form #form="ngForm" (ngSubmit)="bookTicket()" >
+            <div class="input-group mb-3">
+                <label class="input-group-text">Name</label>
+                <input type="text" name="Name" minlength="2" required class="form-control" autocomplete="off" 
+                name="Name" [(ngModel)]="passenger.Name"/><br />
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text">Contact No.(10 digit)</label>
+                <input type="tel" name="Phone" pattern="[6-9]{1}[0-9]{9}" required class="form-control" autocomplete="off" 
+                 [(ngModel)]="passenger.Phone"/><br />
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text">E-mail</label>
+                <input type="email" required class="form-control" autocomplete="off" 
+                name="Email" [(ngModel)]="passenger.Email"/><br />
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text">Gender</label>
+                    <select ngModel class="form-control" name="Gender" [(ngModel)]="passenger.Gender">
+                      <option value="">Select</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text">Age</label>
+                <input type="number"  required class="form-control" autocomplete="off" 
+                name="Age" [(ngModel)]="passenger.Age"/><br />
+            </div>
+
+
+            <button type="reset" value="Reset" class="btn btn-primary" style="margin-left: 0.5%;">Reset</button>
+            <button type="button" value="Add" class="btn btn-primary" style="margin-left: 0.5%;" (click)="AddBanda()">Add</button>
+            <div>
+                <button type="submit" class="btn btn-primary" style="margin-left: 0.5%;margin-top: 1%;" >Submit</button>
+            </div>
+        </form>
+        <br/>
+        
+    </div>
+    <div style="width: 50%; height: 100px; float: right;padding-left:10px">
+        <h2 class="display-6">Members Added</h2>
+        <div style="overflow:auto ; overflow:auto;  display:flex">
+            <div *ngFor="let obj of arr">
+                    <div class="card display-8" style="width: 18rem; margin-left:15px ">
+                        <div class="card-header" style="text-align:center">
+                            <p><b>{{obj.Name}}</b></p>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Age: {{obj.Age}}</li>
+                            <li class="list-group-item">Gender: {{obj.Gender}}</li>
+                        </ul>
+                        <button class="btn btn-primary" style="background-color:red; border:none"  (click)="deleteBanda(obj.Email)">Delete</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>

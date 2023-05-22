@@ -48,4 +48,41 @@ export class FlightManagementService {
        return this.http.get(this.baseApiUrl+`Booking/bookflight?source=${requestData.source}&destination=${requestData.destination}&date=${requestData.date}`, httpOptions)
       }
 
+      //Book ticket based on passenger list
+      BookTicketApi(token:string,requestData:any)
+      {
+       const httpOptions:Object = {
+         headers:new HttpHeaders({
+           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${token}`,
+         }),
+       };
+       return this.http.post(this.baseApiUrl+`Passenger_details/bookpay`,requestData, httpOptions)
+      }
+      
+
+      //Check In APi
+      checkInAPI(token:string,requestData?:number)
+      {
+       const httpOptions:Object = {
+         headers:new HttpHeaders({
+           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${token}`,
+         }),
+       };
+       return this.http.post(this.baseApiUrl+`checkin?BoardingID=${requestData}`,null ,httpOptions)
+      }
+
+      //Get flight booking history
+      FetchHistory(token:string)
+      {
+       const httpOptions:Object = {
+         headers:new HttpHeaders({
+           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${token}`,
+         }),
+       };
+       return this.http.get(this.baseApiUrl+`bookinghistory`, httpOptions)
+      }
+
 }

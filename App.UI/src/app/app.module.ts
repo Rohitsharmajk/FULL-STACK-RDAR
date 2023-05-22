@@ -10,6 +10,10 @@ import { BookFlightComponent } from './Components/book-flight/book-flight.compon
 import { GetDetailsComponent } from './Components/get-details/get-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule } from '@angular/forms';
+import { BookPayComponent } from './Components/book-pay/book-pay.component';
+import { ThankYouPageComponent } from './Components/thank-you-page/thank-you-page.component';
+import { CheckInComponent } from './Components/check-in/check-in.component';
+import { BookingHistoryComponent } from './Components/booking-history/booking-history.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import {FormsModule } from '@angular/forms';
     RegisterComponent,
     HomeComponent,
     BookFlightComponent,
-    GetDetailsComponent
+    GetDetailsComponent,
+    BookPayComponent,
+    ThankYouPageComponent,
+    CheckInComponent,
+    BookingHistoryComponent
   ],
   imports: [
     BrowserModule,

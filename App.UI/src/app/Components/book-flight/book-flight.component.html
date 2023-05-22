@@ -12,36 +12,16 @@
         <th>Book Here</th>
     </tr>
     <!--Dummy Row-->
-    <tr>
-        <td>345</td>
-        <td>Akasa</td>
-        <td>Mumbai</td>
-        <td>Delhi</td>
-        <td>14:50</td>
-        <td>4000</td>
-        <td><a href="#">Book Now</a></td>
+    <tr *ngFor="let obj of data.flights">
+        <td>{{obj.flight_ID}}</td>
+        <td>{{obj.flight_Name}}</td>
+        <td>{{obj.source.charAt(0).toUpperCase() + obj.source.slice(1)}}</td>
+        <td>{{obj.destination.charAt(0).toUpperCase() + obj.destination.slice(1)}}</td>
+        <td>{{obj.boarding_Time}}</td>
+        <td>{{obj.fare}}</td>
+        <td><button (click)="bookNow(obj.flight_ID)">Book Now</button></td>
     </tr>
-   <!-- @{
-        if (ViewBag.dets.Count != 0)
-        {
-            foreach (var x in @ViewBag.dets)
-            {
-            <tr>
-                <td>@x.Flight_ID</td>
-                <td>@x.Flight_Name</td>
-                <td>@x.Beginning</td>
-                <td>@x.Destination</td>
-                <td>@x.Boarding_Time</td>
-                <td>@x.Fare</td>
-                <td><a href='@Url.Action("Book_pay", "Passenger_details", new { FID = @x.Flight_ID })' class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">Book Now</a></td>
-            </tr>
-            }
-        }
-        else
-        {
-            <tr class="display-8" style="text-align:center"><td colspan="7">No Flights Available for the selected date</td></tr>
-        }
-    }-->
+   
 
 </table>
 
