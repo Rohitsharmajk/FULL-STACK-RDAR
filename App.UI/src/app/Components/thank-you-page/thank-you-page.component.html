@@ -38,10 +38,11 @@
             margin: 15px;
             -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
             filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            font-size: 40px;
         }
 
             .date .day {
-                font-size: 80px;
+                font-size: 40px;
                 float: left;
             }
 
@@ -63,11 +64,14 @@
 
         .location {
             float: left;
-            margin: 60px 0 0 20px;
+            margin: 127px 53px 0 24px;
             font-size: 30px;
             font-weight: bold;
             -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
             filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+
+
         }
 
         .rip {
@@ -80,7 +84,7 @@
 
         .cta .fl {
             position: absolute;
-            top: 135px;
+            top: 2%;
             right: 15px;
             display: block;
             font-size: 20px;
@@ -95,6 +99,7 @@
             transform: rotate(-90deg);
             -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
             filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+            margin-left: 90%;
         }
 
         .small {
@@ -112,7 +117,7 @@
                 </div>
 
                 <div class="artist">
-                    <span class="name">{{ob.name}}</span>
+                    <span class="name" style="font-size: 60px;">{{ob.name}}</span>
                     <br />
                     <span class="live small">{{detail.source}} ----------------- {{detail.destination}}</span>
                     <br />
