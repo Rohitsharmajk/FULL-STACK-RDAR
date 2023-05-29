@@ -1,8 +1,10 @@
-<div class="alert alert-success" role="alert">
+
+<div class="thank">
+<div class="alert msg" role="alert">
     <h2 alignment="center" class="alert-heading">Your Booking is Confirmed!</h2>
 
-    <p>Thank you name for booking your flight with us at RDAR booking. We will be contacting you regarding your flight details on phonenum respectively.</p>
-    <hr>
+    <p>Thank you for booking your flight with us at RDAR booking. We will be contacting you regarding your flight details on your repective E-Mail.</p>
+    <hr/>
     <p class="mb-0"><b>NOTE:</b> Your boarding pass has been sent to your registered email for future reference, please exhibit the same at the time of check in</p>
 </div>
 <head>
@@ -22,7 +24,7 @@
             background-repeat: no-repeat;
             background-position: top;
             background-size: 100%;
-            background-color: #0f5132;
+            background-color: #271D40;
             width: 700px;
             height: 300px;
             border-radius: 15px;
@@ -30,7 +32,7 @@
             filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
             display: block;
             margin: 10% auto auto auto;
-            color: #fff;
+            color: white;
             ;
         }
 
@@ -55,7 +57,7 @@
 
         .artist {
             font-size: 30px;
-            margin: 10px 100px 0 40px;
+            margin: -14px 100px 0 40px;
             float: left;
             font-weight: bold;
             -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
@@ -64,12 +66,11 @@
 
         .location {
             float: left;
-            margin: 127px 53px 0 24px;
+            margin: 127px 53px 0 -423px;
             font-size: 30px;
             font-weight: bold;
             -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
             filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
-            transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
 
 
         }
@@ -84,13 +85,13 @@
 
         .cta .fl {
             position: absolute;
-            top: 2%;
-            right: 15px;
+            top: 43%;
+            right: -168px;
             display: block;
             font-size: 20px;
             font-weight: bold;
-            background-color: yellow;
-            padding: 10px 20px;
+            background-color: #FBC48C;
+            padding: 10px 16px;
             border-radius: 25px;
             color: #000;
             text-decoration: none;
@@ -107,7 +108,6 @@
         }
     </style>
 </head>
-<body>
             <div class="ticket" id="myticket" *ngFor="let ob of obj.tickets">
 
                 <div class="date">
@@ -117,9 +117,9 @@
                 </div>
 
                 <div class="artist">
-                    <span class="name" style="font-size: 60px;">{{ob.name}}</span>
+                    <span class="name" style="font-size: 35px;">{{ob.name}}</span>
                     <br />
-                    <span class="live small">{{detail.source}} ----------------- {{detail.destination}}</span>
+                    <span class="live small" style="font-size: 20px;">{{detail.source}} -------------------------- {{detail.destination}}</span>
                     <br />
                     <span class="live small">{{ob.age}}, {{ob.gender}}</span>
                 </div>
@@ -135,3 +135,59 @@
                 </div>
             </div>
     <br/>
+
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Cabin|Indie+Flower|Inknut+Antiqua|Lora|Ravi+Prakash" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  /> -->
+    
+    <!-- <div class="alert alert-success msg" role="alert" >
+        <h2 alignment="center" class="alert-heading" style="padding-bottom: 10px;">Your Booking is Confirmed!</h2>
+    
+        <p style="padding-bottom: 10px;">Thank you name for booking your flight with us at RDAR booking. We will be contacting you regarding your flight details on phonenum respectively.</p>
+        <hr>
+        <p class="mb-0"><b>NOTE:</b> Your boarding pass has been sent to your registered email for future reference, please exhibit the same at the time of check in</p>
+    </div>
+    <div >
+    <div class="container" *ngFor="let ob of obj.tickets">
+      <h1 class="upcomming">Your Tickets</h1>
+      <div class="item">
+        <div class="item-right">
+          <h2 class="num">{{ob.getDate()}}</h2>
+          <p class="day">{{monthNames[ob.getMonth()]}}</p>
+          <span class="up-border"></span>
+          <span class="down-border"></span>
+        </div> //end item-right 
+        
+        <div class="item-left">
+          <p class="event">{{detail.name}}</p>
+          <h2 class="title">{{ob.name}}</h2>
+          
+          <div class="sce">
+            <div class="icon">
+              <i class="fa fa-table"></i>
+            </div>
+            <p>Monday 15th 2016 <br/> 15:20Pm & 11:00Am</p>
+          </div>
+          <div class="fix"></div>
+          <div class="loc">
+            <div class="icon">
+              <i class="fa fa-map-marker"></i>
+            </div>
+            <p>North,Soth, United State , Amre <br/> Party Number 16,20</p>
+          </div>
+          <div class="fix"></div>
+          <button class="tickets">Tickets</button>
+        </div> // end item-right 
+      </div> // end item 
+      
+      <div class="item">
+        <div class="item-right">
+          <h2 class="num">23</h2>
+          <p class="day">Feb</p>
+          <span class="up-border"></span>
+          <span class="down-border"></span>
+        </div> // end item-right 
+        
+        
+        </div>
+    </div> -->

@@ -1,4 +1,8 @@
-<div style="margin-left: 30px; float: left; width: 45%; margin-top: 40px;">
+<div class="registerr">
+  <div  style="margin-left: 30px; width: 45%; ">
+    <div style="margin-right: 30px; ">
+      <h3 class="display-3">Register a new Account</h3>
+    </div>
     <form #form="ngForm" (ngSubmit)="registerUser()" ngNativeValidate>
         <div class="mb-3">
           <label for="userName" class="form-label">UserName</label>
@@ -16,6 +20,7 @@
             name="ConfirmPass" [(ngModel)]="registerUserRequest.ConfirmPass" required>
           </div>
         <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px;" routerLink="/login" >Login</button>
       </form>
       <div id="msg" style="color: red; list-style: none;">
         <ul>
@@ -23,8 +28,9 @@
           <li *ngIf="error !='' ">{{error}}</li>
         </ul>
       </div>
-    </div>
+  </div>
+</div>
+<lib-ng-toast></lib-ng-toast>
+
     
-    <div style="margin-right: 30px; float: right; width: 50%; margin-top: 40px; ">
-        <h3 class="display-3">Welcome to Flight Management Radar!</h3>
-    </div>
+    

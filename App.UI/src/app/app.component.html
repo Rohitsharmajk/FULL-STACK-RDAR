@@ -1,37 +1,56 @@
-<div>
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-  <div class="container-fluid">
-    <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" width="30" height="30" class="d-inline-block align-top mr-3" alt="">
-    <a class="navbar-brand" routerLink=""><h1 class="display-6">FlightManagementRadar</h1></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" *ngIf="currentUser!='nouser' ">
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <button class="nav-link active " aria-current="page" (click)="navigateHome()">Home</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+      <div class="container-fluid">
+        <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" width="30" height="30" class="d-inline-block align-top mr-3" alt="">
+        <a class="navbar-brand inactiveLink disabled"  ><h1 class="display-6">FlightManagementRadar</h1></a>
+        <div >
+          <li class="nav-item justify-content-end" style="margin-left: 60rem;display: flex; color: white;"  *ngIf="user==null && adminUser==null ">
+            <button class="nav-link active logout " (click)="adminLogin()">Admin</button>
+            <button class="nav-link active logout " (click)="userLogin()" style="margin-left: 30%; margin-right:20%;">User</button>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active " href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active " href="#">Contact</a>
-          </li>
-          <li class="nav-item justify-content-end">
-            <button class="nav-link active " (click)="logout()">Logout</button>
-          </li>
-          
-        </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" *ngIf="user!=null || adminUser!=null ">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <button class="nav-link active home" aria-current="page" (click)="navigateHome()">Home</button>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link active about " href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active contact" href="#">Contact</a>
+              </li>
+              <li class="nav-item justify-content-end" style="margin-left: 40rem;display: flex;">
+                <button class="nav-link active logout " (click)="logout()">Logout</button>
+                <button class="nav-link active logout " disabled>{{user}}</button>
+                <button class="nav-link active logout " disabled>{{adminUser}}</button>
+              </li>
+              
+            </ul>
+          </div>
       </div>
+      </div>
+    </nav>
   </div>
-  </div>
-</nav>
-</div>
-<div>
-  
-  
- </div>
+    
+</body>
+</html>
+
+
+
 <!-- Login Page -->
  <!-- <div>
   <app-login></app-login>
@@ -55,4 +74,5 @@
  <!-- <div>
   <app-book-flight></app-book-flight>
  </div> -->
+ <!-- <ngx-ui-loader></ngx-ui-loader> -->
 <router-outlet></router-outlet>

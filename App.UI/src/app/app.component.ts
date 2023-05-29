@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-root',
@@ -8,30 +9,52 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'App.UI';
-  currentUser:string='nouser';
+  user:string|null=null;
+  adminUser:string|null=null;
   constructor(private router :Router)
   {
-    var res=localStorage.getItem('currentUser');
-    console.log(res);
-    if(res!=null)
-    {
-      this.currentUser=res;
-    }
+    //var res=localStorage.getItem('currentUser');
+    //console.log(res);
+    this.user= localStorage.getItem('user');
+    this.adminUser=localStorage.getItem('adminUser');
+   console.log(this.user);
+   console.log(this.adminUser);
   }
   
+  ngOnInit() {
+
+  }
 
   logout()
   {
-    console.log("logout");
-    localStorage.setItem('currentUser','nouser');
-    this.router.navigate(['login'])
-  .then(() => {
-    window.location.reload();
-  });
+    // console.log(environment.userName);
+    //localStorage.setItem('currentUser','nouser');
+    localStorage.removeItem('user');
+    localStorage.removeItem('adminUser');
+    this.user=null;
+    this.adminUser=null;
+    this.router.navigate(['login']);
+  // .then(() => {
+  //   window.location.reload();
+  // });
   }
 navigateHome()
 {
-  this.router.navigate(['home']);
+  if(this.user!=null)
+    this.router.navigate(['home']);
+  else 
+  this.router.navigate(['admin-home']);
 }
+adminLogin()
+{
+  console.log(2);
+  this.router.navigate(['admin-login']);
+}
+userLogin()
+{
+  console.log(2);
+  this.router.navigate(['login']);
+}
+
 
 }

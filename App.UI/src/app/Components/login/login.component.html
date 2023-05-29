@@ -1,7 +1,11 @@
 <!-- <div id="pageloader" style="background: gray url(https://giphy.com/emb
   ed/jAYUbVXgESSti) no-repeat center center; height: 100vh; width: 100vh; position: fixed; z-index: 100;"></div> -->
-  <div style="background-color: blue;">
-<div style="margin-left: 30px; float: left; width: 45%; margin-top: 40px;">
+  <div class="login">
+    <div style="margin-right: 30px; width: 50%; ">
+      <h3 class="display-3">Login to RDAR</h3>
+  </div>
+<div style="margin-left: 30px; width: 45%; margin-top: 40px;">
+  <lib-ng-toast></lib-ng-toast>
 <form #form="ngForm" (ngSubmit)="loginUser()" ngNativeValidate>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">User Name</label>
@@ -16,14 +20,13 @@
     <button type="submit" class="btn btn-primary" routerLink="/login">Login</button>
     <button type="submit" class="btn btn-primary" style="margin-left: 10px;" routerLink="/register" >Register</button>
   </form>
-  <div id="msg" style="color: red; list-style: none; margin-top: 2%;">
+  <!-- <div id="msg" style="color: #D9AA9A; list-style: none; margin-top: 2%;">
     <ul>
       <li *ngIf="error !='' ">{{error}}</li>
     </ul>
-  </div>
+  </div> -->
 </div>
-<div style="margin-right: 30px; float: right; width: 50%; margin-top: 40px; ">
-    <h3 class="display-3">Welcome to Flight Management Radar!</h3>
+
 </div>
-</div>
+<!-- <simple-ng-loader type="circle" delayTime=5000></simple-ng-loader> -->
 <router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { flightDto } from 'src/app/Models/user.model';
 import { FlightManagementService } from 'src/app/services/flight-management.service';
 
@@ -18,15 +19,38 @@ export class GetDetailsComponent {
     fare:0,
     id:-1
   };
-  token:string='';
+
+  
+  token:string|null=null;
+  user:string|null=null;
+
+
   sources:string[]=[];
   dests:string[]=[];
   data=[];
   error:string='';
   error1:string='';
+  
 
-  constructor(private router :Router,private flightmgmservice:FlightManagementService){
-    this.token=this.router.getCurrentNavigation()?.extras.state?.['example'];
+   today = new Date()
+
+ year = this.today.getFullYear()
+ month = this.today.getMonth() + 1 // the months are indexed starting with 0
+ date = this.today.getDate()
+
+ dateStr = `${this.year}-${this.month}-${this.date}`
+  // input = document.querySelector('[name=pickup_date]').setAttribute('min', this.dateStr);
+  //input.setAttribute('min', this.dateStr);
+
+  isLoading:boolean=false;
+
+  constructor(private router :Router,private flightmgmservice:FlightManagementService,private toast:NgToastService){
+    this.token= localStorage.getItem('token');
+    this.user= localStorage.getItem('user');
+    if(this.user==null)
+    {
+      this.router.navigate(['login']);
+    }
     console.log(this.token);
 
     // console.log(2)
@@ -41,7 +65,7 @@ export class GetDetailsComponent {
           
       }, 
       (error: any) => {
-          console.log(error)
+        this.openFailure(error.error);
       })
 
   }
@@ -56,28 +80,41 @@ export class GetDetailsComponent {
       if(this.flightDetailsRequest.source!==this.flightDetailsRequest.destination)
       {
         //console.log(this.flightDetailsRequest);
-        this.flightmgmservice.FetchSpecificFlightDetailsApi(this.token,this.flightDetailsRequest)
-        .subscribe(
-        (response: any) => {
-          
-            console.log(this.flightDetailsRequest);
-            this.data=response;
-            this.router.navigate(['bookFlight'], { state: { example: this.data, example2:this.token ,flightdetail:this.flightDetailsRequest} });
+        this.isLoading=true;
+        setTimeout(() => {
+          this.flightmgmservice.FetchSpecificFlightDetailsApi(this.token,this.flightDetailsRequest)
+          .subscribe(
+          (response: any) => {
             
-        }, 
-        (error: any) => {
-            // console.log(error)
-            this.error=error.error;
-        })
+              // console.log(this.flightDetailsRequest);
+              this.data=response;
+              this.isLoading=false;
+              this.router.navigate(['bookFlight'], { state: { example: this.data,flightdetail:this.flightDetailsRequest} });
+              
+          }, 
+          (error: any) => {
+              console.log(error)
+              this.isLoading=false;
+              this.openFailure(error.error);
+          })
+        }, 3000);
 
         
       }
       else
       {
-        this.error1="souce and destination cannot be same";
+        this.openFailure("Source and Destination cannot be same");
       }
       
       
     }
+
+       openSuccess(){
+      this.toast.success({detail:'Success',summary:'Login is successfull',position:'tr',duration:2000})
+      }
+      openFailure(errorr:any){
+        console.log("hey");
+        this.toast.error({detail:'Failed',summary:errorr,position:'tr',duration:2000})
+        }
 
 }

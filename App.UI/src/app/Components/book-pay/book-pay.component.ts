@@ -10,11 +10,19 @@ import { FlightManagementService } from 'src/app/services/flight-management.serv
 })
 export class BookPayComponent {
 
-  token:string='';
+  token:string|null=null;
+  user:string|null=null;
   flightID:number=12;
   detail:any;
+  isLoading:boolean=false;
   constructor(private router :Router,private flightmgmservice:FlightManagementService,private route: ActivatedRoute){
-    this.token=this.router.getCurrentNavigation()?.extras.state?.['example'];
+    this.token= localStorage.getItem('token');
+    this.user= localStorage.getItem('user');
+    if(this.user==null)
+    {
+      this.router.navigate(['login']);
+    }
+
     this.detail=this.router.getCurrentNavigation()?.extras.state?.['flightdetail'];
     this.route.params.subscribe(res => {
       console.log(this.token);
@@ -36,11 +44,13 @@ export class BookPayComponent {
       passengers:this.arr
     };
     console.log(obj);
+    this.isLoading=true;
     this.flightmgmservice.BookTicketApi(this.token,obj)
         .subscribe(
         (response: any) => {
           
             console.log(this.detail);
+            this.isLoading=false;
             this.router.navigate([`thankYouPage`], { state: { example: response,flightdetail:this.detail} });
             
         }, 

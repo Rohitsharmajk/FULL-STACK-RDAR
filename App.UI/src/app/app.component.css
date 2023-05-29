@@ -1,0 +1,19 @@
+
+.home:hover{
+color: #FDC18C;
+}
+
+.about:hover{
+    color: #FDC18C;
+}
+
+.contact:hover{
+    color: #FDC18C;
+}
+
+.logout:hover{
+    color: #FDC18C;
+}
+body{
+    height: 100%;
+}

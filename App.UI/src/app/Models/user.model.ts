@@ -18,6 +18,15 @@
         name:string,
         fare:number
     }
+    export interface flightDtoo
+    {
+        source:string,
+        destination:string,
+        boarding_Time:string,
+        flight_ID:number,
+        flight_Name:string,
+        fare:number
+    }
     export interface passengerDto
     {
         Name:string,

@@ -11,12 +11,20 @@ import { FlightManagementService } from 'src/app/services/flight-management.serv
 export class BookFlightComponent {
   
  data:any=[];
- token:string='';
+ token:string|null='';
+ user:string|null=null;
  detail:any;
+
   constructor(private router :Router,private flightmgmservice:FlightManagementService){
 
+    this.token= localStorage.getItem('token');
+    this.user= localStorage.getItem('user');
+    if(this.user==null)
+    {
+      this.router.navigate(['login']);
+    }
+    
     this.data=this.router.getCurrentNavigation()?.extras.state?.['example'];
-    this.token=this.router.getCurrentNavigation()?.extras.state?.['example2'];
     this.detail=this.router.getCurrentNavigation()?.extras.state?.['flightdetail'];
     console.log("**********  "+this.token);
     // console.log(this.data);
@@ -38,7 +46,7 @@ export class BookFlightComponent {
 bookNow(id:any)
 {
   console.log("ye h book now", this.detail);
-  this.router.navigate([`bookPay/${id}`], { state: { example: this.token,flightdetail:this.detail} });
+  this.router.navigate([`bookPay/${id}`], { state: { flightdetail:this.detail} });
 
 }
 

@@ -9,6 +9,11 @@ import { BookPayComponent } from './Components/book-pay/book-pay.component';
 import { ThankYouPageComponent } from './Components/thank-you-page/thank-you-page.component';
 import { CheckInComponent } from './Components/check-in/check-in.component';
 import { BookingHistoryComponent } from './Components/booking-history/booking-history.component';
+import { AdminLoginComponent } from './Components/AdminComponent/admin-login/admin-login.component';
+import { AdminHomeComponent } from './Components/AdminComponent/admin-home/admin-home.component';
+import { AddFlightComponent } from './Components/AdminComponent/add-flight/add-flight.component';
+import { UpdateOrRemoveFlightComponent } from './Components/AdminComponent/update-or-remove-flight/update-or-remove-flight.component';
+import { UpdateFlightComponent } from './Components/AdminComponent/update-flight/update-flight.component';
 
 const routes: Routes = [
   // 
@@ -52,7 +57,27 @@ const routes: Routes = [
   {
     path:'bookingHistory',
     component:BookingHistoryComponent
-  }     
+  } ,
+  {
+    path:'admin-login',
+    component:AdminLoginComponent
+  },
+  {
+    path:'admin-home',
+    component:AdminHomeComponent
+  },
+  {
+    path:'addFlight',
+    component:AddFlightComponent
+  },
+  {
+    path:'updateRemoveFlight',
+    component:UpdateOrRemoveFlightComponent
+  },
+  {
+    path:'updateFlight',
+    component:UpdateFlightComponent
+  }           
 ];
 
 @NgModule({

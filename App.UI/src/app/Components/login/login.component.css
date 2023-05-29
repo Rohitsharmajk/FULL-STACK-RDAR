@@ -1,0 +1,24 @@
+
+
+
+.login{
+  background-image: url('https://images.hdqwalls.com/download/passenger-plane-in-clouds-view-from-far-away-26-1920x1080.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-size:cover;
+  height: 89vh;
+  overflow: hidden;
+}
+
+label{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #D9AA9A;
+}
+
+h3{
+  font-family: 'Roboto', sans-serif;
+  color: #C9B9B9;
+  font-weight: bold;
+}
